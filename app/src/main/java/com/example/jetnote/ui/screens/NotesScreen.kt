@@ -1,12 +1,12 @@
 package com.example.jetnote.ui.screens
 
-import androidx.compose.foundation.layout.Column
+
+import android.annotation.SuppressLint
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
-import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -15,10 +15,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetnote.domain.model.NoteModel
 import com.example.jetnote.ui.components.AppDrawer
 import com.example.jetnote.ui.components.TopAppBar
-import com.example.jetnote.ui.theme.Note
+import com.example.jetnote.ui.components.Note
 import com.example.jetnote.viewmodel.MainViewModel
-import com.raywenderlich.android.jetnotes.routing.Screen
+import com.example.jetnote.routing.Screen
 import kotlinx.coroutines.launch
+
 
 @Composable
 fun NotesScreen(viewModel: MainViewModel) {
@@ -50,6 +51,19 @@ fun NotesScreen(viewModel: MainViewModel) {
                     coroutineScope.launch {
                         scaffoldState.drawerState.close()
                     }
+                }
+            )
+        },
+        floatingActionButtonPosition = FabPosition.End,
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { viewModel.onCreateNewNoteClick() },
+                contentColor = MaterialTheme.colors.background,
+                content = {
+                    Icon(
+                        imageVector = Icons.Filled.Add,
+                        contentDescription = "Add Note Button"
+                    )
                 }
             )
         },

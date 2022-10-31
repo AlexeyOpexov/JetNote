@@ -1,4 +1,4 @@
-package com.raywenderlich.android.jetnotes.routing
+package com.example.jetnote.routing
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

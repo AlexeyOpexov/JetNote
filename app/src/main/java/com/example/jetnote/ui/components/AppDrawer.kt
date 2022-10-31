@@ -15,10 +15,10 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.raywenderlich.android.jetnotes.routing.JetNotesRouter
-import com.raywenderlich.android.jetnotes.routing.Screen
-import com.raywenderlich.android.jetnotes.theme.JetNotesTheme
-import com.raywenderlich.android.jetnotes.theme.JetNotesThemeSettings
+import com.example.jetnote.routing.JetNotesRouter
+import com.example.jetnote.routing.Screen
+import com.example.jetnote.ui.theme.JetNotesTheme
+import com.example.jetnote.ui.theme.JetNotesThemeSettings
 
 
 @Composable
@@ -135,7 +135,7 @@ private fun ScreenNavigationButton(
 
 @Composable
 private fun LightDarkThemeItem() {
-    Row() {
+    Row {
         Text(
             text = "Turn on dark theme",
             style = MaterialTheme.typography.body2,

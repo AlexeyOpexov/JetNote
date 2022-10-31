@@ -38,6 +38,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetnote.data.repository.Repository
 import com.example.jetnote.domain.model.NoteModel
+import com.example.jetnote.routing.JetNotesRouter
+import com.example.jetnote.routing.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -53,7 +55,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     }
 
     fun onCreateNewNoteClick() {
-
+        JetNotesRouter.navigateTo(Screen.SaveNote)
     }
 
     fun onNoteClick(note: NoteModel) {

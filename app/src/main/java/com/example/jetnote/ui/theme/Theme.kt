@@ -1,6 +1,6 @@
 
 
-package com.raywenderlich.android.jetnotes.theme
+package com.example.jetnote.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -9,8 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.example.jetnote.ui.theme.rwGreen
-import com.example.jetnote.ui.theme.rwGreenDark
 
 private val LightThemeColors = lightColors(
     primary = rwGreen,

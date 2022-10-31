@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
-import com.raywenderlich.android.jetnotes.theme.JetNotesTheme
+import com.example.jetnote.ui.theme.JetNotesTheme
 
 @Composable
 fun TopAppBar(

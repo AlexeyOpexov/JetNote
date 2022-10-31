@@ -4,21 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Text
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetnote.routing.JetNotesRouter
 import com.example.jetnote.ui.components.AppDrawer
 import com.example.jetnote.ui.screens.NotesScreen
-import com.example.jetnote.ui.theme.Note
 import com.example.jetnote.viewmodel.MainViewModel
-import com.raywenderlich.android.jetnotes.routing.Screen
-import com.raywenderlich.android.jetnotes.theme.JetNotesTheme
-import com.raywenderlich.android.jetnotes.viewmodel.MainViewModelFactory
-import kotlinx.coroutines.launch
+import com.example.jetnote.routing.Screen
+import com.example.jetnote.ui.theme.JetNotesTheme
+import com.example.jetnote.viewmodel.MainViewModelFactory
 
 
 class MainActivity : ComponentActivity() {
@@ -31,15 +26,25 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             JetNotesTheme {
-                NotesScreen(viewModel = viewModel)
+                MainActivityScreen(viewModel = viewModel)
             }
         }
     }
 }
 
-
+@Composable
+private fun MainActivityScreen(viewModel: MainViewModel) {
+    Surface {
+        when (JetNotesRouter.currentScreen) {
+            is Screen.Notes -> NotesScreen(viewModel)
+//            is Screen.SaveNote -> SaveNoteScreen(viewModel)
+//            is Screen.Trash -> TrashScreen(viewModel)
+        }
+    }
+}
 
 
 @Composable

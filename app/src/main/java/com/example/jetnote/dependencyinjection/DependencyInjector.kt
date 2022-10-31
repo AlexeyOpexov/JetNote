@@ -36,10 +36,10 @@ package com.example.jetnote.dependencyinjection
 import android.content.Context
 import androidx.room.Room
 import com.example.jetnote.data.database.AppDatabase
-import com.raywenderlich.android.jetnotes.data.database.dbmapper.DbMapper
-import com.raywenderlich.android.jetnotes.data.database.dbmapper.DbMapperImpl
+import com.example.jetnote.data.database.dbmapper.DbMapper
+import com.example.jetnote.data.database.dbmapper.DbMapperImpl
 import com.example.jetnote.data.repository.Repository
-import com.raywenderlich.android.jetnotes.data.repository.RepositoryImpl
+import com.example.jetnote.data.repository.RepositoryImpl
 
 /**
  * Provides dependencies across the app.

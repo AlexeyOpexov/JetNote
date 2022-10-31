@@ -31,7 +31,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.raywenderlich.android.jetnotes.data.database.dbmapper
+package com.example.jetnote.data.database.dbmapper
 
 import com.example.jetnote.data.database.model.ColorDbModel
 import com.example.jetnote.data.database.model.NoteDbModel

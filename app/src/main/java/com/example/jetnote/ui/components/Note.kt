@@ -1,4 +1,4 @@
-package com.example.jetnote.ui.theme
+package com.example.jetnote.ui.components
 
 
 import androidx.compose.foundation.background
@@ -19,7 +19,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetnote.domain.model.NoteModel
-import com.example.jetnote.ui.components.NoteColor
 import com.example.jetnote.util.fromHex
 
 @Composable

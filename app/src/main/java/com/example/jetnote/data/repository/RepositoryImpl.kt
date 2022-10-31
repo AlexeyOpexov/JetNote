@@ -31,17 +31,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.raywenderlich.android.jetnotes.data.repository
+package com.example.jetnote.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.jetnote.data.database.dao.ColorDao
 import com.example.jetnote.data.database.dao.NoteDao
-import com.raywenderlich.android.jetnotes.data.database.dbmapper.DbMapper
+import com.example.jetnote.data.database.dbmapper.DbMapper
 import com.example.jetnote.data.database.model.ColorDbModel
 import com.example.jetnote.data.database.model.NoteDbModel
-import com.example.jetnote.data.repository.Repository
 import com.example.jetnote.domain.model.ColorModel
 import com.example.jetnote.domain.model.NoteModel
 import kotlinx.coroutines.GlobalScope
@@ -76,7 +75,7 @@ class RepositoryImpl(
       // Prepopulate colors
       val colors = ColorDbModel.DEFAULT_COLORS.toTypedArray()
       val dbColors = colorDao.getAllSync()
-      if (dbColors.isNullOrEmpty()) {
+      if (dbColors.isEmpty()) {
         colorDao.insertAll(*colors)
       }
 
