@@ -63,7 +63,6 @@ fun TopAppBar(
                     .padding(start = 16.dp, end = 16.dp)
             )
         }
-
     )
 }
 
