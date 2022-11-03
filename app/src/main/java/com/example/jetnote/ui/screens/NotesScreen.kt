@@ -34,11 +34,20 @@ fun NotesScreen(viewModel: MainViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = "JetNotes",
-                icon = Icons.Filled.List,
-                onIconClick = {
-                    coroutineScope.launch {
-                        scaffoldState.drawerState.open()
+                title = {
+                    Text(
+                        text = "JetNotes",
+                        color = MaterialTheme.colors.onPrimary
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = {
+                        coroutineScope.launch { scaffoldState.drawerState.open() }
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.List,
+                            contentDescription = "Drawer Button"
+                        )
                     }
                 }
             )
@@ -92,7 +101,8 @@ private fun NotesList(
             Note(
                 note = note,
                 onNoteClick = onNoteClick,
-                onNoteCheckedChange = onNoteCheckedChange
+                onNoteCheckedChange = onNoteCheckedChange,
+                isSelected = false
             )
         }
     }
