@@ -12,6 +12,7 @@ import com.example.jetnote.ui.components.AppDrawer
 import com.example.jetnote.ui.screens.NotesScreen
 import com.example.jetnote.viewmodel.MainViewModel
 import com.example.jetnote.routing.Screen
+import com.example.jetnote.ui.screens.SaveNoteScreen
 import com.example.jetnote.ui.theme.JetNotesTheme
 import com.example.jetnote.viewmodel.MainViewModelFactory
 
@@ -40,7 +41,7 @@ private fun MainActivityScreen(viewModel: MainViewModel) {
     Surface {
         when (JetNotesRouter.currentScreen) {
             is Screen.Notes -> NotesScreen(viewModel)
-//            is Screen.SaveNote -> SaveNoteScreen(viewModel)
+            is Screen.SaveNote -> SaveNoteScreen(viewModel)
 //            is Screen.Trash -> TrashScreen(viewModel)
         }
     }

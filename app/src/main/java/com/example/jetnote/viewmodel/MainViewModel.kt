@@ -34,14 +34,17 @@
 package com.example.jetnote.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetnote.data.repository.Repository
+import com.example.jetnote.domain.model.ColorModel
 import com.example.jetnote.domain.model.NoteModel
 import com.example.jetnote.routing.JetNotesRouter
 import com.example.jetnote.routing.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * View model used for storing the global app state.
@@ -54,12 +57,25 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         repository.getAllNotesNotInTrash()
     }
 
+    // Состояние записи заметки
+    private var _noteEntry = MutableLiveData(NoteModel())
+    val noteEntry: LiveData<NoteModel> = _noteEntry
+
+    // Цвет заметки
+    val colors: LiveData<List<ColorModel>> by lazy {
+        repository.getAllColors()
+    }
+
+
+    // Functions
     fun onCreateNewNoteClick() {
+        _noteEntry.value = NoteModel()
         JetNotesRouter.navigateTo(Screen.SaveNote)
     }
 
     fun onNoteClick(note: NoteModel) {
-
+        _noteEntry.value = note
+        JetNotesRouter.navigateTo(Screen.SaveNote)
     }
 
     fun onNoteCheckedChange(note: NoteModel) {
@@ -68,7 +84,56 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
+    // Обновить заметку
+    fun onNoteEntryChange(note: NoteModel) {
+        _noteEntry.value = note
+    }
+
+    fun saveNote(note: NoteModel) {
+        viewModelScope.launch(Dispatchers.Default) {
+            repository.insertNote(note)
+
+            withContext(Dispatchers.Main) {
+                JetNotesRouter.navigateTo(Screen.Notes)
+
+                _noteEntry.value = NoteModel()
+            }
+        }
+    }
+
+    fun moveNoteToTrash(note: NoteModel) {
+        viewModelScope.launch(Dispatchers.Default) {
+            repository.moveNoteToTrash(note.id)
+
+            withContext(Dispatchers.Main) {
+                JetNotesRouter.navigateTo(Screen.Notes)
+            }
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
